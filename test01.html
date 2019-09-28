@@ -1,0 +1,36 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AR Test</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+  <script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+  
+
+  <a-scene embedded arjs="debugUIEnabled:false; sourceType: webcam;">
+    <a-assets>
+      <a-asset-item id="vrm" src="./assets/models/daruma.glb"></a-asset-item>
+    </a-assets>
+
+    <a-marker type='pattern' url='./assets/marker/pattern-qr.patt'>
+      <a-gltf-model src="#vrm" position='0 0 0' rotation="-90 0 0" scale="0.5 0.5 0.5" visible="true"></a-gltf-model>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+  <div class="overlay">
+    <a class="link" href="#">リンクテスト</a>
+  </div>
+
+</body>
+
+</html>
