@@ -13,15 +13,15 @@
   <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
   <script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>
   <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
-  
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
 
   <a-scene>
     <a-assets>
       <a-asset-item id="vrm" src="./assets/models/daruma.glb"></a-asset-item>
     </a-assets>
 
-    <a-marker type='pattern' url='./assets/marker/pattern-qr.patt'>
-      <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; startEvents: click; dur: 10000">
+    <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='./assets/marker/pattern-qr.patt'>
+      <a-entity animation="property: rotation; to: 0 360 0; loop: true; startEvents: click; dur: 1000">
         <a-box position="0 0 0" width="0.5" height="0.5" depth="0.5" color="red"></a-box>
       </a-entity>
     </a-marker>
