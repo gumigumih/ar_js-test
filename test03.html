@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>AR Test</title>
+  <title>カルビーAR神社</title>
   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
@@ -21,7 +21,7 @@
     </a-assets>
 
     <a-marker markerhandler emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='./assets/marker/pattern-qr.patt'>
-      <a-entity animation="property: rotation; to: 0 360 0; loop: true; startEvents: click; dur: 1000">
+      <a-entity animation="property: rotation; to: 0 360 0; loop: true; startEvents: click; pauseEvents: click; dur: 1000">
         <a-box position="0 0 0" width="0.5" height="0.5" depth="0.5" color="red"></a-box>
       </a-entity>
     </a-marker>

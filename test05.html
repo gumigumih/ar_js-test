@@ -1,0 +1,65 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>カルビーAR神社</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+  <script src="https://rawgit.com/gasolin/aframe-href-component/master/dist/aframe-href-component.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v5.0.0/dist/aframe-extras.min.js"></script>
+
+  <script>
+    AFRAME.registerComponent('markerhandler', {
+
+      init: function () {
+        const marker = document.querySelector("#marker");
+        const entity = document.querySelector("#model");
+
+        // マーカーを検出したイベントの登録
+        marker.addEventListener('markerFound', function () {
+            var markerId = marker.id;
+            alert('markerFound', markerId);
+
+        });
+
+        // マーカーを見失ったイベントの登録
+        marker.addEventListener('markerLost', function () {
+            var markerId = marker.id;
+            alert('markerLost', markerId);
+
+        });
+
+        // クリックしたらサイズアップ
+        marker.addEventListener('click', function (ev, target) {
+          var markerId = marker.id;
+          alert('click', markerId);
+        });
+      }
+    });
+  </script>
+
+
+  <a-scene>
+    <a-assets>
+      <a-asset-item id="model" src="./assets/models/zinnzya_ebisen_01.glb"></a-asset-item>
+    </a-assets>
+
+    <a-marker markerhandler id="marker" emitevents="true" cursor="rayOrigin: mouse" type='pattern' url='./assets/marker/pattern-qr.patt'>
+      <a-entity>
+        <a-gltf-model id="model" src="#model" position='0 0 0' rotation="5 180 0" scale="0.3 0.3 0.3" visible="true"></a-gltf-model>
+      </a-entity>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+</body>
+
+</html>
