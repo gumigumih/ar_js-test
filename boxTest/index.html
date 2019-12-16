@@ -5,8 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>カルビーAR神社</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>AR.js box表示テスト</title>
 </head>
 
 <body>
@@ -17,9 +16,6 @@
   
 
   <a-scene embedded arjs="debugUIEnabled:false; sourceType: webcam;">
-    <a-assets>
-      <a-asset-item id="vrm" src="./assets/models/daruma.glb"></a-asset-item>
-    </a-assets>
 
     <a-marker type='pattern' url='./assets/marker/pattern-qr.patt'>
       <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
@@ -29,10 +25,6 @@
 
     <a-entity camera></a-entity>
   </a-scene>
-
-  <div class="overlay">
-    <a class="link" href="#">リンクテスト</a>
-  </div>
 
 </body>
 
