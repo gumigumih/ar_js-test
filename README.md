@@ -1,4 +1,11 @@
-# テスト用ARマーカー
+# AR.js_test
+
+いろいろ使い方をテスト。
+
+## ライブラリ
+[Github](https://github.com/jeromeetienne/AR.js)
+
+## テスト用ARマーカー
 
 ![QR](./pattern-qr.png)
 
@@ -14,4 +21,6 @@
 - Tapイベントテスト
   - [test page](./tapEventTest/)
 - Marker検出イベントテスト
-  - [test page](./tapEventTest/)
+  - [test page](./markerEventTest/)
+- AR.js GPSテスト
+  - [test page](./LocationBaseTest/)
