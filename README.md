@@ -11,4 +11,7 @@
   - [test page](./gltfTest/)
 - アニメーションテスト
   - [test page](./animationTest/)
-  
+- Tapイベントテスト
+  - [test page](./tapEventTest/)
+- Marker検出イベントテスト
+  - [test page](./tapEventTest/)
