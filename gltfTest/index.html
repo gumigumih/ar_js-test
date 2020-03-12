@@ -16,11 +16,11 @@
 
   <a-scene embedded arjs="debugUIEnabled:false; sourceType: webcam;">
     <a-assets>
-      <a-asset-item id="vrm" src="./assets/models/daruma.glb"></a-asset-item>
+      <a-asset-item id="model" src="./assets/models/daruma.glb"></a-asset-item>
     </a-assets>
 
     <a-marker type='pattern' url='./assets/marker/pattern-qr.patt'>
-      <a-gltf-model src="#vrm" position='0 0 0' rotation="-90 0 0" scale="0.5 0.5 0.5" visible="true"></a-gltf-model>
+      <a-gltf-model src="#model" position='0 0 0' rotation="-90 0 0" scale="0.5 0.5 0.5" visible="true"></a-gltf-model>
     </a-marker>
 
     <a-entity camera></a-entity>

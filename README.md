@@ -7,20 +7,20 @@
 
 ## テスト用ARマーカー
 
-![QR](./pattern-qr.png)
+![QR](https://gumigumih.github.io/AR.js_test/pattern-qr.png)
 
 
 ## テスト
 
 - box 表示テスト
-  - [test page](./boxTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/boxTest/)
 - gltf 表示テスト
-  - [test page](./gltfTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/gltfTest/)
 - アニメーションテスト
-  - [test page](./animationTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/animationTest/)
 - Tapイベントテスト
-  - [test page](./tapEventTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/tapEventTest/)
 - Marker検出イベントテスト
-  - [test page](./markerEventTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/markerEventTest/)
 - AR.js GPSテスト
-  - [test page](./LocationBaseTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/LocationBaseTest/)
