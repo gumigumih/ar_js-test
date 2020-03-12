@@ -1,0 +1,31 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AR.js particle表示テスト</title>
+</head>
+
+<body>
+  <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+  <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+
+  <a-scene embedded arjs="debugUIEnabled:false; sourceType: webcam;">
+    <a-assets>
+      <a-asset-item id="model" src="./assets/models/daruma.glb"></a-asset-item>
+    </a-assets>
+
+    <a-marker type='pattern' url='./assets/marker/pattern-qr.patt'>
+      <a-gltf-model src="#model" position='0 0 0' rotation="-90 0 0" scale="0.5 0.5 0.5" visible="true"></a-gltf-model>
+      <a-entity position="0 2.25 -15" particle-system="preset: snow; size: 10"></a-entity>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+</body>
+
+</html>
