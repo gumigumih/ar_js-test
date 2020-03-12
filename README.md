@@ -23,6 +23,6 @@
 - Marker検出イベントテスト
   - [test page](https://gumigumih.github.io/AR.js_test/markerEventTest/)
 - AR.js GPSテスト
-  - [test page](https://gumigumih.github.io/AR.js_test/LocationBaseTest/)
+  - [test page](https://gumigumih.github.io/AR.js_test/locationBaseTest/)
 - パーティクルテスト
   - [test page](https://gumigumih.github.io/AR.js_test/particleTest/)
