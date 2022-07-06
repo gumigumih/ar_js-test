@@ -1,0 +1,55 @@
+<!doctype HTML>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AR.js 録画テスト</title>
+  <style>
+    .overlayUi {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .overlayUi .clickable {
+      position: relative;
+      pointer-events: auto;
+      z-index: 100;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="./assets/js/record.js"></script>
+
+  <div class="overlayUi">
+    <button class="clickable" type="button" id="record-start">Record Start</button>
+    <button class="clickable" type="button" id="record-stop">Record Stop</button>
+
+    <audio class="clickable" controls src="./assets/audio/audio.mp3"></audio>
+
+    <div id="my-video">
+      
+    </div>
+  </div>
+
+  <a-scene embedded arjs="debugUIEnabled:false; sourceType: webcam;">
+
+    <a-marker type='pattern' url='./assets/marker/pattern-qr.patt'>
+      <a-entity rotation="0 0 0" animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+        <a-box position="0 0 0" width="0.5" height="0.5" depth="0.5" color="red"></a-box>
+      </a-entity>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+  </a-scene>
+
+</body>
+
+</html>

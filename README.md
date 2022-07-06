@@ -26,3 +26,5 @@
   - [test page](https://gumigumih.github.io/test_AR.js/locationBaseTest/)
 - パーティクルテスト
   - [test page](https://gumigumih.github.io/test_AR.js/particleTest/)
+- 録画テスト
+  - [test page](https://gumigumih.github.io/test_AR.js/recordingTest/)
