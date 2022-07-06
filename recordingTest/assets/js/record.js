@@ -96,8 +96,10 @@
             video.style.width = '320px';
             video.style.height = '240px';
             video.style.zIndex = 100;
-            document.body.appendChild(video);
+            video.style.pointerEvents = 'auto';
+            document.getElementById('record-preview').appendChild(video);
         }
+        video.srcObject = window.gameRecorder.result;
         video.src = window.URL.createObjectURL(window.gameRecorder.result);
         video.play();
     };
@@ -105,10 +107,13 @@
     window.onload = () => {
         document.getElementById('record-start').addEventListener('click', () => {
             console.log('record-start');
+            document.querySelector('audio').play();
             window.gameRecorder.start();
         });
         document.getElementById('record-stop').addEventListener('click', () => {
             console.log('record-stop');
+            document.querySelector('audio').pause();
+            document.querySelector('audio').currentTime = 0;
             window.gameRecorder.stop();
             window.gameRecorder.showVideo();
         });

@@ -20,6 +20,9 @@
       pointer-events: auto;
       z-index: 100;
     }
+    .overlayUi .hidden {
+      display: none;
+    }
   </style>
 </head>
 
@@ -32,10 +35,9 @@
     <button class="clickable" type="button" id="record-start">Record Start</button>
     <button class="clickable" type="button" id="record-stop">Record Stop</button>
 
-    <audio class="clickable" controls src="./assets/audio/audio.mp3"></audio>
+    <audio class="clickable hidden" controls src="./assets/audio/audio.mp3"></audio>
 
-    <div id="my-video">
-      
+    <div id="record-preview">
     </div>
   </div>
 
