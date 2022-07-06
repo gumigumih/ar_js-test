@@ -3,7 +3,7 @@
 いろいろ使い方をテスト。
 
 ## ライブラリ
-[Github](https://github.com/jeromeetienne/AR.js)
+[AR.js](https://ar-js-org.github.io/AR.js-Docs/)
 
 ## テスト用ARマーカー
 
