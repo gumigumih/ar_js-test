@@ -3,7 +3,7 @@
 いろいろ使い方をテスト。
 
 ## ライブラリ
-[Github](https://github.com/jeromeetienne/AR.js)
+[AR.js](https://ar-js-org.github.io/AR.js-Docs/)
 
 ## テスト用ARマーカー
 
@@ -26,3 +26,5 @@
   - [test page](https://gumigumih.github.io/test_AR.js/locationBaseTest/)
 - パーティクルテスト
   - [test page](https://gumigumih.github.io/test_AR.js/particleTest/)
+- 録画テスト
+  - [test page](https://gumigumih.github.io/test_AR.js/recordingTest/)
