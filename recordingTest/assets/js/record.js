@@ -135,8 +135,10 @@
             function frame() {
                 arImage.src = arCanvas.toDataURL('image/png');
 
-                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
+                arImage.addEventListener('load', function () {
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
+                }, false);
                 window.requestAnimationFrame(frame);
             }
         }
