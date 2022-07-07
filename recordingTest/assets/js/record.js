@@ -1,7 +1,15 @@
 (() => {
+    var requestAnimationFrame = window.requestAnimationFrame || 
+                                window.mozRequestAnimationFrame ||
+                                window.webkitRequestAnimationFrame || 
+                                window.msRequestAnimationFrame;
+    window.requestAnimationFrame = requestAnimationFrame;
+
     class GameRecorder {
         constructor() {
             this._reset();
+            
+            setTimeout(this._composeVideo, 2000)
         }
 
         get result() {
@@ -83,7 +91,7 @@
 
             const audioStream = document.querySelector('audio').captureStream();
             console.log(audioStream);
-            const canvasStream = this._composeVideo().captureStream();
+            const canvasStream = this._canvas.captureStream();
             console.log(canvasStream);
 
             const mediaStream = new MediaStream();
@@ -117,17 +125,19 @@
             }
 
             const ctx = canvas.getContext('2d');
-            setInterval(function() {
-                if (canvas && ctx) {
-                    arImage.src = arCanvas.toDataURL();
-                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-                    ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
-                }
-            }, 10000 / 30);
-            
             document.getElementById('record-preview').appendChild(canvas);
             document.getElementById('record-preview').appendChild(arImage);
-            return canvas;
+
+            _render();
+
+            function _render() {
+                arImage.src = arCanvas.toDataURL();
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
+                window.requestAnimationFrame(_render);
+            }
+
+            this._canvas = canvas;
         }
     }
 
