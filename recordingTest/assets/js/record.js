@@ -115,6 +115,7 @@
                 canvas.width = arCanvas.width;
                 canvas.style.width = '320px';
                 canvas.style.height = '240px';
+                canvas.style.display = 'none';
                 document.getElementById('record-preview').appendChild(canvas);
             }
             let arImage = document.getElementById('my-img');
@@ -125,7 +126,7 @@
                 arImage.width = arCanvas.width;
                 arImage.style.width = '320px';
                 arImage.style.height = '240px';
-                document.getElementById('record-preview').appendChild(arImage);
+                // document.getElementById('record-preview').appendChild(arImage);
             }
 
             const ctx = canvas.getContext('2d');
@@ -164,13 +165,20 @@
         video.src = window.URL.createObjectURL(window.gameRecorder.result);
         video.play();
     };
+    window.gameRecorder.downloadVideo = function () {
+        console.log('window.gameRecorder.downloadVideo');
+        let aTag = document.createElement('a');
+        aTag.href = window.URL.createObjectURL(window.gameRecorder.result);
+        aTag.download = 'a.mp4';
+        aTag.click();
+    };
 
     window.onload = () => {
         document.getElementById('record-start').addEventListener('click', (e) => {
             console.log('record-start');
             document.querySelector('audio').play();
             window.gameRecorder.start();
-        }, { passive: true });
+        });
         document.getElementById('record-stop').addEventListener('click', (e) => {
             console.log('record-stop');
             document.querySelector('audio').pause();
@@ -178,6 +186,10 @@
             window.gameRecorder.stop().then(() => {
                 window.gameRecorder.showVideo();
             });
-        }, { passive: true });
+        });
+        document.getElementById('record-dl').addEventListener('click', (e) => {
+            console.log('record-dl');
+            window.gameRecorder.downloadVideo();
+        });
     }
 })();
