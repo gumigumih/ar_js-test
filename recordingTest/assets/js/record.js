@@ -26,7 +26,7 @@
                 'video/webm',
                 'video/mpeg'
             ];
-            this._mimeType = MIMETYPE_LIST.find((type) => MediaRecorder.isTypeSupported(type))
+            this._mimeType = MIMETYPE_LIST.find((type) => MediaRecorder.isTypeSupported(type));
 
             this._recorder = new MediaRecorder(stream, {
                 mimeType: this._mimeType
@@ -51,9 +51,11 @@
             return new Promise((resolve) => {
                 this._isRecording = false;
                 this._recorder.addEventListener('stop', (e) => {
+                    console.log(this._chunks);
                     this._result = new Blob(this._chunks, {
                         type: this._mimeType
                     });
+                    console.log(this._chunks);
                     resolve(this._result);
                 });
                 this._recorder.stop();
@@ -82,9 +84,11 @@
             console.log(audioStream);
             const canvasStream = document.querySelector('canvas').captureStream();
             console.log(canvasStream);
+            const videoStream = document.querySelector('video').captureStream();
+            console.log(videoStream);
 
             const mediaStream = new MediaStream();
-            [canvasStream, audioStream].forEach((stream) => {
+            [videoStream, canvasStream, audioStream].forEach((stream) => {
                 stream.getTracks().forEach((track) => mediaStream.addTrack(track));
             });
             console.log(mediaStream);
@@ -111,7 +115,7 @@
             video.style.pointerEvents = 'auto';
             document.getElementById('record-preview').appendChild(video);
         }
-        console.log(window.gameRecorder);
+        console.log(window.gameRecorder.result);
         // video.srcObject = window.gameRecorder.result;
         video.src = window.URL.createObjectURL(window.gameRecorder.result);
         video.play();
@@ -127,8 +131,9 @@
             console.log('record-stop');
             document.querySelector('audio').pause();
             document.querySelector('audio').currentTime = 0;
-            window.gameRecorder.stop();
-            window.gameRecorder.showVideo();
+            window.gameRecorder.stop().then(() => {
+                window.gameRecorder.showVideo();
+            });
         });
     }
 })();
