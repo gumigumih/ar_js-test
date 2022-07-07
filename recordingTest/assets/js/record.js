@@ -104,7 +104,7 @@
         }
         
         _composeVideo() {
-            let arCanvas = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
+            let arCanvas = document.querySelector('.a-canvas');
             const video = document.getElementById('arjs-video');
 
             let canvas = document.getElementById('my-canvas');
@@ -115,16 +115,25 @@
                 canvas.width = arCanvas.width;
                 canvas.style.width = '320px';
                 canvas.style.height = '240px';
+                document.getElementById('record-preview').appendChild(canvas);
+            }
+            let arImage = document.getElementById('my-img');
+            if (!arImage) {
+                arImage = document.createElement('img');
+                arImage.id = 'my-img';
+                arImage.height = arCanvas.height;
+                arImage.width = arCanvas.width;
+                arImage.style.width = '320px';
+                arImage.style.height = '240px';
+                document.getElementById('record-preview').appendChild(arImage);
             }
 
             const ctx = canvas.getContext('2d');
-            document.getElementById('record-preview').appendChild(canvas);
 
             frame();
 
             function frame() {
-                let arImage = document.createElement('img');
-                arImage.src = arCanvas.toDataURL();
+                arImage.src = arCanvas.toDataURL('image/png');
 
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
@@ -150,7 +159,6 @@
             document.getElementById('record-preview').appendChild(video);
         }
         console.log(window.gameRecorder.result);
-        // video.srcObject = window.gameRecorder.result;
         video.src = window.URL.createObjectURL(window.gameRecorder.result);
         video.play();
     };
