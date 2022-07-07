@@ -80,20 +80,54 @@
             // oscillator.connect(destination);
 
             // const audioStream = destination.stream;
+
             const audioStream = document.querySelector('audio').captureStream();
             console.log(audioStream);
-            const canvasStream = document.querySelector('canvas').captureStream();
+            const canvasStream = this._composeVideo().captureStream();
             console.log(canvasStream);
-            const videoStream = document.querySelector('video').captureStream();
-            console.log(videoStream);
 
             const mediaStream = new MediaStream();
-            [videoStream, canvasStream, audioStream].forEach((stream) => {
+            [canvasStream, audioStream].forEach((stream) => {
                 stream.getTracks().forEach((track) => mediaStream.addTrack(track));
             });
             console.log(mediaStream);
 
             return mediaStream;
+        }
+        
+        _composeVideo() {
+            const arCanvas = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
+            const video = document.querySelector('video');
+
+            let canvas = document.getElementById('my-canvas');
+            if (!canvas) {
+                canvas = document.createElement('canvas');
+                canvas.id = 'my-canvas';
+                canvas.height = arCanvas.height;
+                canvas.width = arCanvas.width;
+                canvas.style.width = '320px';
+                canvas.style.height = '240px';
+            }
+            let arImage = document.getElementById('my-img');
+            if (!arImage) {
+                arImage = document.createElement('img');
+                arImage.id = 'my-img';
+                arImage.style.width = '320px';
+                arImage.style.height = '240px';
+            }
+
+            const ctx = canvas.getContext('2d');
+            setInterval(function() {
+                if (canvas && ctx) {
+                    arImage.src = arCanvas.toDataURL();
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
+                }
+            }, 10000 / 30);
+            
+            document.getElementById('record-preview').appendChild(canvas);
+            document.getElementById('record-preview').appendChild(arImage);
+            return canvas;
         }
     }
 
@@ -108,10 +142,8 @@
             video = document.createElement('video');
             video.id = 'my-video';
             video.setAttribute('controls', 'controls');
-            video.style.position = 'absolute';
             video.style.width = '320px';
             video.style.height = '240px';
-            video.style.zIndex = 100;
             video.style.pointerEvents = 'auto';
             document.getElementById('record-preview').appendChild(video);
         }
