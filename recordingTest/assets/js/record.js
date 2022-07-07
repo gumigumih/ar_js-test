@@ -91,7 +91,7 @@
 
             const audioStream = document.querySelector('audio').captureStream();
             console.log(audioStream);
-            const canvasStream = this._canvas.captureStream();
+            const canvasStream = document.getElementById('my-canvas').captureStream();
             console.log(canvasStream);
 
             const mediaStream = new MediaStream();
@@ -104,8 +104,8 @@
         }
         
         _composeVideo() {
-            const arCanvas = document.querySelector("a-scene").components.screenshot.getCanvas("perspective");
-            const video = document.querySelector('video');
+            let arCanvas = document.querySelector('a-scene').components.screenshot.getCanvas('perspective');
+            const video = document.getElementById('arjs-video');
 
             let canvas = document.getElementById('my-canvas');
             if (!canvas) {
@@ -116,28 +116,20 @@
                 canvas.style.width = '320px';
                 canvas.style.height = '240px';
             }
-            let arImage = document.getElementById('my-img');
-            if (!arImage) {
-                arImage = document.createElement('img');
-                arImage.id = 'my-img';
-                arImage.style.width = '320px';
-                arImage.style.height = '240px';
-            }
 
             const ctx = canvas.getContext('2d');
             document.getElementById('record-preview').appendChild(canvas);
-            document.getElementById('record-preview').appendChild(arImage);
 
-            _render();
+            frame();
 
-            function _render() {
+            function frame() {
+                let arImage = document.createElement('img');
                 arImage.src = arCanvas.toDataURL();
+
                 ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
                 ctx.drawImage(arImage, 0, 0, canvas.width, canvas.height);
-                window.requestAnimationFrame(_render);
+                window.requestAnimationFrame(frame);
             }
-
-            this._canvas = canvas;
         }
     }
 
@@ -164,18 +156,18 @@
     };
 
     window.onload = () => {
-        document.getElementById('record-start').addEventListener('click', () => {
+        document.getElementById('record-start').addEventListener('click', (e) => {
             console.log('record-start');
             document.querySelector('audio').play();
             window.gameRecorder.start();
-        });
-        document.getElementById('record-stop').addEventListener('click', () => {
+        }, { passive: true });
+        document.getElementById('record-stop').addEventListener('click', (e) => {
             console.log('record-stop');
             document.querySelector('audio').pause();
             document.querySelector('audio').currentTime = 0;
             window.gameRecorder.stop().then(() => {
                 window.gameRecorder.showVideo();
             });
-        });
+        }, { passive: true });
     }
 })();
