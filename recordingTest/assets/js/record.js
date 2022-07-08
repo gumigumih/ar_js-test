@@ -115,7 +115,7 @@
                 canvas.width = arCanvas.width;
                 canvas.style.width = '320px';
                 canvas.style.height = '240px';
-                canvas.style.display = 'none';
+                // canvas.style.display = 'none';
                 document.getElementById('record-preview').appendChild(canvas);
             }
             let arImage = document.getElementById('my-img');
