@@ -78,9 +78,9 @@
 
             // const audioStream = destination.stream;
 
-            const audio = document.getElementById('record-audio');
-            const audioStream = audio.captureStream ? audio.captureStream() : audio.mozCaptureStream();
-            console.log(audioStream);
+            // const audio = document.getElementById('record-audio');
+            // const audioStream = audio.captureStream ? audio.captureStream() : audio.mozCaptureStream();
+            // console.log(audioStream);
             const canvas = document.getElementById('my-canvas');
             const canvasStream = canvas.captureStream ? canvas.captureStream() : canvas.mozCaptureStream();
             console.log(canvasStream);
