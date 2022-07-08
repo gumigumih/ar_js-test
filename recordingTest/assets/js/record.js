@@ -92,7 +92,7 @@
                 canvasStream = canvas.captureStream();
                 console.log(canvasStream);
             } else {
-                audioStream = null;
+                canvasStream = null;
             }
 
             const mediaStream = new MediaStream();
