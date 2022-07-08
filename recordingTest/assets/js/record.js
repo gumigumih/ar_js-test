@@ -78,19 +78,11 @@
 
             // const audioStream = destination.stream;
 
-
-            const sUsrAg = navigator.userAgent;
-            let audioStream, canvasStream;
-            if (sUsrAg.indexOf('Firefox') > -1) {
-                console.log('Firefox');
-                audioStream = document.getElementById('record-audio').mozCaptureStream();
-                canvasStream = document.getElementById('my-canvas').mozCaptureStream();
-            } else {
-                console.log('Other');
-                audioStream = document.getElementById('record-audio').captureStream();
-                canvasStream = document.getElementById('my-canvas').captureStream();
-            }
+            const audio = document.getElementById('record-audio');
+            const audioStream = audio.captureStream ? audio.captureStream() : audio.mozCaptureStream();
             console.log(audioStream);
+            const canvas = document.getElementById('my-canvas');
+            const canvasStream = canvas.captureStream ? canvas.captureStream() : canvas.mozCaptureStream();
             console.log(canvasStream);
 
             const mediaStream = new MediaStream();
