@@ -80,16 +80,16 @@
 
             const audio = document.getElementById('record-audio');
             let audioStream;
-            if (audio.captureStream || audio.mozCaptureStream) {
-                audioStream = audio.captureStream ? audio.captureStream() : audio.mozCaptureStream();
+            if (audio.captureStream) {
+                audioStream = audio.captureStream();
                 console.log(audioStream);
             } else {
                 audioStream = null;
             }
             const canvas = document.getElementById('my-canvas');
             let canvasStream;
-            if (canvas.captureStream || canvas.mozCaptureStream) {
-                canvasStream = canvas.captureStream ? canvas.captureStream() : canvas.mozCaptureStream();
+            if (canvas.captureStream) {
+                canvasStream = canvas.captureStream();
                 console.log(canvasStream);
             } else {
                 audioStream = null;
