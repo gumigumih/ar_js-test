@@ -34,11 +34,8 @@
                 'video/webm',
                 'video/mpeg'
             ];
-            this._mimeType = MIMETYPE_LIST.find((type) => MediaRecorder.isTypeSupported(type));
-
-            this._recorder = new MediaRecorder(stream, {
-                mimeType: this._mimeType
-            });
+            this._recorder = new MediaRecorder(stream);
+            this._mimeType = this._recorder.mimeType;
             this._recorder.addEventListener('dataavailable', (e) => {
                 this._chunks.push(e.data);
             });
