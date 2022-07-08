@@ -117,7 +117,7 @@
                 canvas.style.width = '320px';
                 canvas.style.height = '240px';
                 // canvas.style.display = 'none';
-                document.getElementById('record-preview').appendChild(canvas);
+                document.getElementById('record-canvas').appendChild(canvas);
             }
             let arImage = document.getElementById('my-img');
             if (!arImage) {
@@ -127,7 +127,6 @@
                 arImage.width = arCanvas.width;
                 arImage.style.width = '320px';
                 arImage.style.height = '240px';
-                // document.getElementById('record-preview').appendChild(arImage);
             }
 
             const ctx = canvas.getContext('2d');
@@ -160,7 +159,7 @@
             video.style.width = '320px';
             video.style.height = '240px';
             video.style.pointerEvents = 'auto';
-            document.getElementById('record-preview').appendChild(video);
+            document.getElementById('record-video').appendChild(video);
         }
         console.log(window.gameRecorder.result);
         video.src = window.URL.createObjectURL(window.gameRecorder.result);
