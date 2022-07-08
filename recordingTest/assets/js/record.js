@@ -27,19 +27,11 @@
             this._reset();
             const stream = this._createStream();
 
-            const MIMETYPE_LIST = [
-                'video/webm;codecs=vp9',
-                'video/webm;codecs=vp8',
-                'video/webm;codecs=h264',
-                'video/webm',
-                'video/mpeg'
-            ];
             this._recorder = new MediaRecorder(stream);
-            this._mimeType = this._recorder.mimeType;
             this._recorder.addEventListener('dataavailable', (e) => {
                 this._chunks.push(e.data);
             });
-            this._recorder.start(5000);
+            this._recorder.start(1000);
             this._isRecording = true;
         }
 
@@ -58,7 +50,7 @@
                 this._recorder.addEventListener('stop', (e) => {
                     console.log(this._chunks);
                     this._result = new Blob(this._chunks, {
-                        type: this._mimeType
+                        type: this._recorder.mimeType
                     });
                     console.log(this._chunks);
                     resolve(this._result);
