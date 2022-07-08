@@ -78,15 +78,25 @@
 
             // const audioStream = destination.stream;
 
-            // const audio = document.getElementById('record-audio');
-            // const audioStream = audio.captureStream ? audio.captureStream() : audio.mozCaptureStream();
-            // console.log(audioStream);
+            const audio = document.getElementById('record-audio');
+            let audioStream;
+            if (audio.captureStream || audio.mozCaptureStream) {
+                audioStream = audio.captureStream ? audio.captureStream() : audio.mozCaptureStream();
+                console.log(audioStream);
+            } else {
+                audioStream = null;
+            }
             const canvas = document.getElementById('my-canvas');
-            const canvasStream = canvas.captureStream ? canvas.captureStream() : canvas.mozCaptureStream();
-            console.log(canvasStream);
+            let canvasStream;
+            if (canvas.captureStream || canvas.mozCaptureStream) {
+                canvasStream = canvas.captureStream ? canvas.captureStream() : canvas.mozCaptureStream();
+                console.log(canvasStream);
+            } else {
+                audioStream = null;
+            }
 
             const mediaStream = new MediaStream();
-            [canvasStream].forEach((stream) => {
+            [canvasStream, audioStream].forEach((stream) => {
                 stream.getTracks().forEach((track) => mediaStream.addTrack(track));
             });
             console.log(mediaStream);
