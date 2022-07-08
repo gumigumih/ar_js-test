@@ -96,7 +96,10 @@
             }
 
             const mediaStream = new MediaStream();
-            [canvasStream, audioStream].forEach((stream) => {
+            let tracks = [];
+            if (canvasStream) tracks.push(canvasStream);
+            if (audioStream) tracks.push(audioStream);
+            tracks.forEach((stream) => {
                 stream.getTracks().forEach((track) => mediaStream.addTrack(track));
             });
             console.log(mediaStream);
