@@ -47,7 +47,7 @@
   <script src="./assets/js/record.js"></script>
 
   <div class="overlayUi">
-    <div class="controlArea">
+    <div class="controlArea clickable">
       <button class="clickable" type="button" id="record-start">Record Start</button>
       <button class="clickable" type="button" id="record-stop">Record Stop</button>
       <button class="clickable" type="button" id="record-dl">Download</button>
@@ -55,14 +55,14 @@
 
     <div class="inputArea">
       カメラ映像＋AR　合成
-      <div id="record-canvas" class="clickable"></div>
+      <div id="record-canvas"></div>
       音声
-      <audio id="record-audio" class="clickable" controls src="./assets/audio/audio.mp3"></audio>
+      <audio id="record-audio" controls src="./assets/audio/audio.mp3"></audio>
     </div>
 
     <div class="outputArea">
       最終出力映像
-      <div id="record-video" class="clickable"></div>
+      <div id="record-video"></div>
     </div>
   </div>
 
