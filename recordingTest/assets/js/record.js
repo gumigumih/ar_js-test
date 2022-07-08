@@ -78,7 +78,7 @@
 
             // const audioStream = destination.stream;
 
-            const audioStream = document.querySelector('audio').captureStream();
+            const audioStream = document.getElementById('record-audio').captureStream();
             console.log(audioStream);
             const canvasStream = document.getElementById('my-canvas').captureStream();
             console.log(canvasStream);
